@@ -1,0 +1,7 @@
+# Local tooling
+.claude/
+.DS_Store
+
+# Kept off the public site because it includes a phone number.
+# To publish a résumé, save a phone-free version under this name and delete this line.
+assets/Billy-Dang-Resume.pdf

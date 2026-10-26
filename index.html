@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Billy Phu Dang — Cloud &amp; Full-Stack Developer</title>
+  <meta name="description" content="Billy Phu Dang — Software Engineering grad from Iowa State building full-stack features and shipping them through the cloud (AWS, Google Cloud, CI/CD).">
+  <meta property="og:title" content="Billy Phu Dang — Cloud & Full-Stack Developer">
+  <meta property="og:description" content="Full-stack features, cloud deployments, CI/CD. Iowa State Software Engineering, Class of 2026.">
+  <meta property="og:image" content="assets/avatar.jpg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232f6bff'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' font-size='28' fill='white'%3EBD%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Set the theme before first paint so there's no light/dark flash -->
+  <script>
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem('theme'); } catch (e) {}
+      var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+    })();
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-github" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4l-9 9M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 0 0 .5-8.97A6 6 0 0 0 6.34 8.5 5 5 0 0 0 7 19z"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 10 5-10 5L2 7z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></symbol>
+    <symbol id="i-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="4"/><path d="M2 21v-1a6 6 0 0 1 6-6h2a6 6 0 0 1 6 6v1M16 4a4 4 0 0 1 0 8M22 21v-1a6 6 0 0 0-4-5.6"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5M22 9v6"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></symbol>
+    <symbol id="i-lifebuoy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="m5.6 5.6 3.6 3.6M14.8 14.8l3.6 3.6M18.4 5.6l-3.6 3.6M9.2 14.8l-3.6 3.6"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m10 8 6 4-6 4z"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></symbol>
+    <symbol id="i-cube" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 9 5v10l-9 5-9-5V7z"/><path d="m3 7 9 5 9-5M12 12v10"/></symbol>
+    <symbol id="i-gamepad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="11" rx="5"/><path d="M7 11v3M5.5 12.5h3"/><circle cx="16" cy="11.5" r=".8"/><circle cx="18" cy="13.5" r=".8"/></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7 4.7 1.8-4.7 1.8L12 16l-1.8-4.7-4.7-1.8 4.7-1.8z"/><path d="M19 15l.8 2.2 2.2.8-2.2.8L19 21l-.8-2.2-2.2-.8 2.2-.8z"/></symbol>
+    <symbol id="i-health" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/><path d="M3.5 12h4l2-3 3 6 2-3h6"/></symbol>
+    <symbol id="i-smile" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M8 14h3M8 17h6"/></symbol>
+    <symbol id="i-cards" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="12" height="16" rx="2" transform="rotate(10 13 11)"/><rect x="4" y="5" width="12" height="16" rx="2"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+    <symbol id="i-pipeline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="6" height="6" rx="1.5"/><rect x="15" y="15" width="6" height="6" rx="1.5"/><path d="M6 9v3a3 3 0 0 0 3 3h6"/></symbol>
+    <symbol id="i-replay" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></symbol>
+    <symbol id="i-fork" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="5" r="2"/><circle cx="18" cy="5" r="2"/><circle cx="12" cy="19" r="2"/><path d="M6 7v2a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V7M12 12v5"/></symbol>
+  </svg>
+
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#home" aria-label="Billy Dang — home">
+        <span class="brand-mark">BD</span>
+        <span class="brand-name">billy<span class="accent">.</span>dang</span>
+      </a>
+
+      <nav class="tabs" aria-label="Sections">
+        <a href="#home" data-tab="home">Home</a>
+        <a href="#experience" data-tab="experience">Experience</a>
+        <a href="#projects" data-tab="projects">Projects</a>
+        <a href="#resume" data-tab="resume">Résumé</a>
+        <span class="tab-indicator" aria-hidden="true"></span>
+      </nav>
+
+      <div class="top-actions">
+      <!-- Shown only when running on your own computer; hidden on the published site -->
+      <a class="site-link" id="prepLink" href="http://localhost:8081/" hidden><svg aria-hidden="true"><use href="#i-external"/></svg><span>Interview prep</span></a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <mask id="moon-mask">
+            <rect width="24" height="24" fill="white"/>
+            <circle class="moon-cut" cx="27" cy="7" r="6" fill="black"/>
+          </mask>
+          <circle class="sun-core" cx="12" cy="12" r="5" fill="currentColor" mask="url(#moon-mask)"/>
+          <g class="sun-rays" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="12" y1="1.5" x2="12" y2="3.5"/><line x1="12" y1="20.5" x2="12" y2="22.5"/>
+            <line x1="1.5" y1="12" x2="3.5" y2="12"/><line x1="20.5" y1="12" x2="22.5" y2="12"/>
+            <line x1="4.6" y1="4.6" x2="6" y2="6"/><line x1="18" y1="18" x2="19.4" y2="19.4"/>
+            <line x1="4.6" y1="19.4" x2="6" y2="18"/><line x1="18" y1="6" x2="19.4" y2="4.6"/>
+          </g>
+        </svg>
+      </button>
+      </div>
+    </div>
+    <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================== HOME ============================== -->
+    <section class="page" id="page-home" data-title="Billy Phu Dang — Cloud & Full-Stack Developer">
+      <div class="hero-bg" aria-hidden="true">
+        <div class="grid-lines"></div>
+        <div class="blob blob-a"></div>
+        <div class="blob blob-b"></div>
+        <div class="beams">
+          <span class="beam h" style="--pos:22%; --dur:7s;  --delay:0s"></span>
+          <span class="beam h" style="--pos:58%; --dur:9s;  --delay:2.5s"></span>
+          <span class="beam h" style="--pos:84%; --dur:6s;  --delay:4s"></span>
+          <span class="beam v" style="--pos:14%; --dur:8s;  --delay:1s"></span>
+          <span class="beam v" style="--pos:72%; --dur:10s; --delay:3s"></span>
+        </div>
+      </div>
+
+      <div class="container hero">
+        <div class="hero-text">
+          <p class="eyebrow reveal"><span class="live-dot"></span> Open to entry-level cloud roles</p>
+          <h1 class="reveal" style="--d:1">Hi, I'm <span class="grad">Billy Phu Dang</span></h1>
+          <p class="terminal reveal" style="--d:2" aria-label="Cloud developer, full-stack engineer, CI/CD enthusiast, game dev explorer">
+            <span class="prompt">~/billy $</span> <span id="typed" aria-hidden="true"></span><span class="caret" aria-hidden="true"></span>
+          </p>
+          <p class="lead reveal" style="--d:3">
+            Software Engineering grad from Iowa State who builds full-stack features and ships them through the cloud.
+            Right now I'm working on VA healthcare software at <strong>VetsEZ</strong> with AWS and CI/CD in a government cloud.
+          </p>
+          <div class="hero-actions reveal" style="--d:4">
+            <a class="btn btn-primary" href="#projects">See my projects <svg class="ico"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-ghost" id="heroResume" href="assets/Billy-Dang-Resume.pdf" download>Résumé <svg class="ico"><use href="#i-download"/></svg></a>
+          </div>
+          <div class="socials reveal" style="--d:5">
+            <a href="https://github.com/bpdang07" target="_blank" rel="noopener" aria-label="GitHub"><svg><use href="#i-github"/></svg></a>
+            <a href="https://www.linkedin.com/in/billyphudang/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg><use href="#i-linkedin"/></svg></a>
+            <a href="mailto:bpdang07@gmail.com" aria-label="Email"><svg><use href="#i-mail"/></svg></a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" style="--d:2">
+          <div class="orbit-wrap">
+            <div class="orbit orbit-outer">
+              <span class="orb" style="--a:20deg"><span class="orb-spin"><span class="orb-chip" style="--c:#FF9900">AWS</span></span></span>
+              <span class="orb" style="--a:110deg"><span class="orb-spin"><span class="orb-chip" style="--c:#00ADD8">Go</span></span></span>
+              <span class="orb" style="--a:200deg"><span class="orb-spin"><span class="orb-chip" style="--c:#61DAFB">React</span></span></span>
+              <span class="orb" style="--a:290deg"><span class="orb-spin"><span class="orb-chip" style="--c:#ED8B00">Java</span></span></span>
+            </div>
+            <div class="orbit orbit-inner">
+              <span class="orb" style="--a:60deg"><span class="orb-spin"><span class="orb-chip" style="--c:#4285F4">Google Cloud</span></span></span>
+              <span class="orb" style="--a:180deg"><span class="orb-spin"><span class="orb-chip" style="--c:#2496ED">Docker</span></span></span>
+              <span class="orb" style="--a:300deg"><span class="orb-spin"><span class="orb-chip" style="--c:#22c55e">CI/CD</span></span></span>
+            </div>
+            <div class="avatar">
+              <img src="assets/avatar.jpg" alt="Billy Phu Dang" width="270" height="270">
+            </div>
+            <div class="float-card fc-a">
+              <span class="fc-icon"><svg><use href="#i-briefcase"/></svg></span>
+              <span><small>Now</small>Full Stack Dev Intern @ VetsEZ</span>
+            </div>
+            <div class="float-card fc-b">
+              <span class="fc-icon gold"><svg><use href="#i-trophy"/></svg></span>
+              <span><small>Hackathon</small>Best AI Application</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="marquee-block" aria-label="Tech I work with">
+        <div class="marquee">
+          <div class="marquee-track">
+            <div class="marquee-group">
+              <span class="chip" style="--c:#FF9900">AWS</span>
+              <span class="chip" style="--c:#4285F4">Google Cloud</span>
+              <span class="chip" style="--c:#2496ED">Docker</span>
+              <span class="chip" style="--c:#22c55e">CI/CD</span>
+              <span class="chip" style="--c:#00ADD8">Go</span>
+              <span class="chip" style="--c:#ED8B00">Java</span>
+              <span class="chip" style="--c:#3776AB">Python</span>
+              <span class="chip" style="--c:#F7DF1E">JavaScript</span>
+              <span class="chip" style="--c:#61DAFB">React</span>
+              <span class="chip" style="--c:#6DB33F">Spring Boot</span>
+              <span class="chip" style="--c:#44B78B">Django</span>
+              <span class="chip" style="--c:#4169E1">PostgreSQL</span>
+            </div>
+          </div>
+        </div>
+        <div class="marquee reverse">
+          <div class="marquee-track">
+            <div class="marquee-group">
+              <span class="chip" style="--c:#47A248">MongoDB</span>
+              <span class="chip" style="--c:#4479A1">MySQL</span>
+              <span class="chip" style="--c:#A8B9CC">C</span>
+              <span class="chip" style="--c:#9B4F96">C#</span>
+              <span class="chip" style="--c:#F05138">Swift</span>
+              <span class="chip" style="--c:#478CBF">GDScript</span>
+              <span class="chip" style="--c:#478CBF">Godot</span>
+              <span class="chip" style="--c:#38BDF8">Tailwind</span>
+              <span class="chip" style="--c:#7952B3">Bootstrap</span>
+              <span class="chip" style="--c:#DD0031">Angular</span>
+              <span class="chip" style="--c:#3DDC84">Android Studio</span>
+              <span class="chip" style="--c:#F05032">Git</span>
+              <span class="chip" style="--c:#008080">LaTeX</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container section">
+        <div class="section-head reveal">
+          <span class="kicker">01 — About me</span>
+          <h2>Code to cloud, end to end.</h2>
+          <span class="rule"></span>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-text">
+            <p class="reveal">
+              I'm a software engineer who likes the whole path from code to cloud: writing the feature, wiring up the pipeline,
+              and watching it land safely in production. I studied Software Engineering at
+              <strong>Iowa State University</strong> (B.S., Class of 2026).
+            </p>
+            <p class="reveal">
+              Right now I'm a <strong>Full Stack Developer Intern at VetsEZ</strong>, building features for VA-facing healthcare
+              software used by veterans across the U.S., working with AWS and CI/CD pipelines in a government cloud environment.
+              Before that I spent two years at <strong>Railpark Thoughts</strong>, a startup where I went from game development and
+              research to deploying and managing projects on Google Cloud.
+            </p>
+            <p class="reveal">
+              Outside of work I'm usually solving my daily LeetCode problem, building something in Godot, or at a hackathon.
+              My team's app <strong>Mazi</strong> won Best AI Application at Iowa State's Applied AI hackathon.
+            </p>
+          </div>
+
+          <ul class="facts card" data-stagger>
+            <li><span class="fact-icon"><svg><use href="#i-cap"/></svg></span><div><small>Education</small>B.S. Software Engineering, Iowa State · 2026</div></li>
+            <li><span class="fact-icon"><svg><use href="#i-briefcase"/></svg></span><div><small>Currently</small>Full Stack Developer Intern, VetsEZ</div></li>
+            <li><span class="fact-icon"><svg><use href="#i-cloud"/></svg></span><div><small>Cloud</small>AWS (gov cloud) · Google Cloud</div></li>
+            <li><span class="fact-icon"><svg><use href="#i-trophy"/></svg></span><div><small>Award</small>Best AI Application, ISU Applied AI Hackathon</div></li>
+            <li><span class="fact-icon"><svg><use href="#i-sparkles"/></svg></span><div><small>Interests</small>Full stack · Cloud engineering · Game dev</div></li>
+          </ul>
+        </div>
+
+        <div class="stats" data-stagger>
+          <div class="stat card"><span class="stat-num" data-count="3">0</span><span class="stat-label">tech roles since 2023</span></div>
+          <div class="stat card"><span class="stat-num" data-count="2">0</span><span class="stat-label">cloud platforms used at work</span></div>
+          <div class="stat card"><span class="stat-num" data-count="7" data-suffix="+">0</span><span class="stat-label">projects built</span></div>
+          <div class="stat card"><span class="stat-num" data-count="1">0</span><span class="stat-label">hackathon award</span></div>
+        </div>
+      </div>
+
+      <div class="container section section-tight">
+        <div class="section-head reveal">
+          <span class="kicker">02 — What I bring</span>
+          <h2>Built for cloud teams.</h2>
+          <span class="rule"></span>
+        </div>
+        <div class="value-grid" data-stagger>
+          <article class="card value spot lift">
+            <span class="value-icon"><svg><use href="#i-pipeline"/></svg></span>
+            <h3>Cloud &amp; delivery</h3>
+            <p>At VetsEZ I work with AWS and CI/CD pipelines in a government cloud, where deployments have to be secure and repeatable. At Railpark Thoughts I deployed and managed projects on Google Cloud.</p>
+          </article>
+          <article class="card value spot lift">
+            <span class="value-icon"><svg><use href="#i-layers"/></svg></span>
+            <h3>Full-stack range</h3>
+            <p>I've built across the stack: Android with Spring Boot (Coup V2), FastAPI, React and PostgreSQL in Docker (SurgiMatch), and Swift with ARKit and Vision (Sofu Tofu Maker).</p>
+          </article>
+          <article class="card value spot lift">
+            <span class="value-icon"><svg><use href="#i-lifebuoy"/></svg></span>
+            <h3>Keeps systems running</h3>
+            <p>Nearly three years in Iowa State's IT System Support Group taught me to troubleshoot fast, keep downtime low, explain fixes clearly, and train the next person.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="container section section-tight">
+        <div class="section-head reveal">
+          <span class="kicker">03 — Beyond the code</span>
+          <h2>Clubs &amp; community.</h2>
+          <span class="rule"></span>
+        </div>
+        <div class="org-grid" data-stagger>
+          <article class="card org spot lift"><span class="org-icon"><svg><use href="#i-users"/></svg></span><h3>STEM Scholars</h3><p>Peer mentorship and free support for minority and first-generation STEM students.</p></article>
+          <article class="card org spot lift"><span class="org-icon"><svg><use href="#i-bolt"/></svg></span><h3>PrISUm</h3><p>Iowa State's solar car team, competing every year in the American Solar Challenge.</p></article>
+          <article class="card org spot lift"><span class="org-icon"><svg><use href="#i-activity"/></svg></span><h3>ISU Badminton Club</h3><p>Practicing fundamentals and sparring with fellow club members.</p></article>
+          <article class="card org spot lift"><span class="org-icon"><svg><use href="#i-globe"/></svg></span><h3>Model UN Club</h3><p>Treasurer of a brand-new club building communication and debate skills.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== EXPERIENCE ============================== -->
+    <section class="page" id="page-experience" data-title="Experience — Billy Phu Dang" hidden>
+      <div class="container section page-top">
+        <div class="section-head reveal">
+          <span class="kicker">Experience</span>
+          <h2>Where I've worked.</h2>
+          <span class="rule"></span>
+          <p class="section-sub">A lot of this happened at the same time, so here it is on one timeline. Hover over a role to see what overlapped with it, or click it to jump to the details.</p>
+        </div>
+
+        <div class="card gantt reveal" id="gantt">
+          <div class="gantt-head">
+            <h3>Timeline</h3>
+            <div class="gantt-tools">
+              <span class="gantt-hint" id="gHint">Hover over a role to compare</span>
+              <button class="g-replay" id="gReplay" type="button"><svg aria-hidden="true"><use href="#i-replay"/></svg> Replay</button>
+            </div>
+          </div>
+
+          <div class="gantt-body">
+            <div class="g-plot" aria-hidden="true">
+              <div class="g-years" id="gYears"></div>
+              <span class="g-span" id="gSpan"></span>
+              <span class="g-today" id="gToday"><span class="g-today-label">Today</span></span>
+            </div>
+
+            <ol class="g-rows">
+              <li class="g-row" data-start="2022-08" data-end="2026-05" data-target="exp-isu" data-short="My degree" style="--bar: var(--c-isu)">
+                <div class="g-label"><strong>B.S. Software Engineering</strong><span>Iowa State University · Aug 2022 – May 2026</span></div>
+                <div class="g-track"><button class="g-bar" type="button" aria-label="B.S. Software Engineering, Aug 2022 to May 2026. Show details."><span class="g-dur"></span></button></div>
+              </li>
+              <li class="g-row" data-start="2023-09" data-end="2026-05" data-target="exp-it" data-short="IT Support" style="--bar: var(--c-it)">
+                <div class="g-label"><strong>IT System Support Group</strong><span>Iowa State University · Sep 2023 – May 2026</span></div>
+                <div class="g-track"><button class="g-bar" type="button" aria-label="IT System Support Group, Sep 2023 to May 2026. Show details."><span class="g-dur"></span></button></div>
+              </li>
+              <li class="g-row" data-start="2024-05" data-end="2026-05" data-target="exp-railpark" data-short="Railpark" style="--bar: var(--c-railpark)">
+                <div class="g-label"><strong>Programming Intern</strong><span>Railpark Thoughts · May 2024 – May 2026</span></div>
+                <div class="g-track"><button class="g-bar" type="button" aria-label="Programming Intern at Railpark Thoughts, May 2024 to May 2026. Show details."><span class="g-dur"></span></button></div>
+              </li>
+              <li class="g-row" data-start="2026-06" data-end="present" data-target="exp-vetsez" data-short="VetsEZ" style="--bar: var(--c-vetsez)">
+                <div class="g-label"><strong>Full Stack Developer Intern</strong><span>VetsEZ · Jun 2026 – Present</span></div>
+                <div class="g-track"><button class="g-bar ongoing" type="button" aria-label="Full Stack Developer Intern at VetsEZ, Jun 2026 to present. Show details."><span class="g-dur"></span></button></div>
+              </li>
+            </ol>
+          </div>
+
+          <p class="gantt-note"><svg><use href="#i-layers"/></svg> <span>From <strong>May 2024 to May 2026</strong> I was doing three things at once: finishing my degree, working IT support, and interning at Railpark Thoughts.</span></p>
+        </div>
+
+        <div class="exp-grid" data-stagger>
+          <article class="card exp-card spot" id="exp-vetsez" style="--bar: var(--c-vetsez)">
+            <header class="tl-head">
+              <div>
+                <h3>Full Stack Developer Intern</h3>
+                <p class="org-line">VetsEZ <span>· Remote</span></p>
+              </div>
+              <span class="date">Jun 2026 — Present</span>
+            </header>
+            <ul class="bullets">
+              <li>Build and maintain full-stack features for VA-facing healthcare software serving veterans across the U.S., part of federal digital-services modernization.</li>
+              <li>Work hands-on with AWS and CI/CD pipelines in a government cloud environment, supporting secure, scalable deployments.</li>
+              <li>Collaborate remotely with cross-functional teams to ship iterative improvements to production systems.</li>
+            </ul>
+            <div class="tags"><span>AWS</span><span>CI/CD</span><span>Government cloud</span><span>Full stack</span><span>Healthcare</span></div>
+          </article>
+
+          <article class="card exp-card spot" id="exp-railpark" style="--bar: var(--c-railpark)">
+            <header class="tl-head">
+              <div>
+                <h3>Programming Intern</h3>
+                <p class="org-line">Railpark Thoughts <span>· Remote</span></p>
+              </div>
+              <span class="date">May 2024 — May 2026</span>
+            </header>
+            <ul class="bullets">
+              <li>Grew across two terms at a tech startup, from game development and foundational research to deploying and managing projects on Google Cloud.</li>
+              <li>Implemented frameworks that improved scalability and performance while adapting quickly to shifting priorities and new technologies.</li>
+              <li>Worked with cross-functional teammates to deliver creative solutions.</li>
+            </ul>
+            <div class="tags"><span>Google Cloud</span><span>Deployment</span><span>Scalability</span><span>Game dev</span><span>Research</span></div>
+          </article>
+
+          <article class="card exp-card spot" id="exp-it" style="--bar: var(--c-it)">
+            <header class="tl-head">
+              <div>
+                <h3>IT System Support Group</h3>
+                <p class="org-line">Iowa State University <span>· Ames, Iowa</span></p>
+              </div>
+              <span class="date">Sep 2023 — May 2026</span>
+            </header>
+            <ul class="bullets">
+              <li>Provided high-level end-user support, resolving system issues in line with state and university regulations.</li>
+              <li>Troubleshot and identified issues quickly to minimize downtime and disruption.</li>
+              <li>Trained new employees on managing devices and working effectively with faculty and students.</li>
+            </ul>
+            <div class="tags"><span>Troubleshooting</span><span>Compliance</span><span>Training</span><span>Support</span></div>
+          </article>
+
+          <article class="card exp-card spot" id="exp-isu" style="--bar: var(--c-isu)">
+            <header class="tl-head">
+              <div>
+                <h3>B.S. Software Engineering</h3>
+                <p class="org-line">Iowa State University <span>· Ames, Iowa</span></p>
+              </div>
+              <span class="date">Aug 2022 — May 2026</span>
+            </header>
+            <ul class="bullets">
+              <li>Team-built <strong>Coup V2</strong> over a full semester: an Android app with a Spring Boot backend and a CI/CD pipeline on GitLab.</li>
+              <li>Won <strong>Best AI Application</strong> at the ISU Applied AI hackathon with Mazi.</li>
+              <li>Student orgs: STEM Scholars, PrISUm solar car team, Badminton Club, Model UN (Treasurer).</li>
+            </ul>
+            <div class="tags"><span>Software engineering</span><span>Team projects</span><span>Hackathons</span></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="container section section-tight">
+        <div class="section-head reveal">
+          <span class="kicker">Toolbox</span>
+          <h2>Skills.</h2>
+          <span class="rule"></span>
+        </div>
+        <div class="skill-grid" data-stagger>
+          <article class="card skill-group">
+            <h3><svg><use href="#i-cloud"/></svg> Cloud &amp; DevOps</h3>
+            <div class="tags lg"><span>AWS</span><span>Google Cloud</span><span>CI/CD pipelines</span><span>Docker</span><span>Git · GitHub · GitLab</span></div>
+          </article>
+          <article class="card skill-group">
+            <h3><svg><use href="#i-code"/></svg> Languages</h3>
+            <div class="tags lg"><span>Go</span><span>Java</span><span>Python</span><span>JavaScript</span><span>C</span><span>C#</span><span>Swift</span><span>SQL</span><span>GDScript</span><span>LaTeX</span></div>
+          </article>
+          <article class="card skill-group">
+            <h3><svg><use href="#i-layers"/></svg> Frameworks</h3>
+            <div class="tags lg"><span>React</span><span>Spring Boot</span><span>Django</span><span>Angular</span><span>.NET</span><span>Tailwind</span><span>Bootstrap</span><span>Espresso</span><span>Electron</span><span>SwiftUI</span></div>
+          </article>
+          <article class="card skill-group">
+            <h3><svg><use href="#i-cube"/></svg> Data &amp; tools</h3>
+            <div class="tags lg"><span>PostgreSQL</span><span>MySQL</span><span>MongoDB</span><span>Godot</span><span>Android Studio</span><span>Xcode</span><span>Adobe CC</span><span>Krita</span><span>Microsoft 365</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PROJECTS ============================== -->
+    <section class="page" id="page-projects" data-title="Projects — Billy Phu Dang" hidden>
+      <div class="container section page-top">
+        <div class="section-head reveal">
+          <span class="kicker">Projects</span>
+          <h2>Things I've built.</h2>
+          <span class="rule"></span>
+          <p class="section-sub">Team builds, hackathon wins and side projects. Filter by what you care about.</p>
+        </div>
+
+        <div class="filters reveal" role="group" aria-label="Filter projects">
+          <button class="filter" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter" type="button" data-filter="cloud" aria-pressed="false">Cloud &amp; Web</button>
+          <button class="filter" type="button" data-filter="mobile" aria-pressed="false">Mobile</button>
+          <button class="filter" type="button" data-filter="games" aria-pressed="false">Games</button>
+          <button class="filter" type="button" data-filter="tools" aria-pressed="false">Tools</button>
+        </div>
+
+        <div class="projects-grid" data-stagger>
+          <article class="card project spot lift" data-cat="cloud">
+            <div class="project-art" style="--art: linear-gradient(135deg, #0ea5a4, #2563eb)">
+              <svg><use href="#i-health"/></svg>
+            </div>
+            <div class="project-body">
+              <p class="project-kicker">Cloud &amp; Web · Team</p>
+              <h3>SurgiMatch</h3>
+              <p>A web platform that matches qualified nurses to surgical staffing needs by location, skills and availability. FastAPI and PostgreSQL backend, React and TypeScript frontend, with the whole stack in Docker Compose.</p>
+              <div class="tags"><span>FastAPI</span><span>React</span><span>PostgreSQL</span><span>Docker</span></div>
+              <div class="project-links">
+                <a href="https://github.com/SurgiMatch/SurgiMatch" target="_blank" rel="noopener"><svg><use href="#i-github"/></svg> Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project spot lift" data-cat="cloud">
+            <div class="project-art" style="--art: linear-gradient(135deg, #f59e0b, #ef4444)">
+              <span class="art-badge"><svg><use href="#i-trophy"/></svg> Best AI Application</span>
+              <svg><use href="#i-sparkles"/></svg>
+            </div>
+            <div class="project-body">
+              <p class="project-kicker">AI · Hackathon winner</p>
+              <h3>Mazi</h3>
+              <p>Won Best AI Application at Iowa State's Applied AI hackathon. Mazi helps large groups travel together, using AI to build a shared itinerary with events, hotels and flights.</p>
+              <div class="tags"><span>AI</span><span>Trip planning</span><span>Hackathon</span></div>
+            </div>
+          </article>
+
+          <article class="card project spot lift" data-cat="mobile tools">
+            <div class="project-art" style="--art: linear-gradient(135deg, #ec4899, #8b5cf6)">
+              <svg><use href="#i-smile"/></svg>
+            </div>
+            <div class="project-body">
+              <p class="project-kicker">iOS · Web · Desktop</p>
+              <h3>Sofu Tofu Maker</h3>
+              <p>A face-sticker filter that follows your real expression. An iOS app using ARKit face tracking and Vision, plus a web version and an Electron desktop app that feed FaceTime through OBS Virtual Camera.</p>
+              <div class="tags"><span>Swift</span><span>ARKit</span><span>Vision</span><span>JavaScript</span><span>Electron</span></div>
+            </div>
+          </article>
+
+          <article class="card project spot lift" data-cat="mobile games">
+            <div class="project-art" style="--art: linear-gradient(135deg, #7c3aed, #1e293b)">
+              <svg><use href="#i-cards"/></svg>
+            </div>
+            <div class="project-body">
+              <p class="project-kicker">Android · Team of students</p>
+              <h3>Coup V2</h3>
+              <p>A multiplayer Android take on the card game Coup by Rikki Tahta. I owned frontend work: game art, login and sign-up, settings, friends and messaging, and custom themes. Spring Boot backend with CI/CD on GitLab.</p>
+              <div class="tags"><span>Java</span><span>Android</span><span>Spring Boot</span><span>CI/CD</span></div>
+              <div class="project-links">
+                <a href="https://github.com/bpdang07/CoupV2" target="_blank" rel="noopener"><svg><use href="#i-github"/></svg> Code</a>
+                <a href="https://www.youtube.com/watch?v=nfro94SzJfE" target="_blank" rel="noopener"><svg><use href="#i-play"/></svg> Demo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project spot lift" data-cat="tools">
+            <div class="project-art" style="--art: linear-gradient(135deg, #00ADD8, #0f766e)">
+              <svg><use href="#i-cube"/></svg>
+            </div>
+            <div class="project-body">
+              <p class="project-kicker">Go · 3D</p>
+              <h3>SVG → STL</h3>
+              <p>Reads an SVG file path, expands its points and extrudes them to a set height, turning flat vector shapes into 3D-printable STL files.</p>
+              <div class="tags"><span>Go</span><span>Geometry</span><span>3D printing</span></div>
+              <div class="project-links">
+                <a href="https://github.com/bpdang07/Hole" target="_blank" rel="noopener"><svg><use href="#i-github"/></svg> Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project spot lift" data-cat="games">
+            <div class="project-art" style="--art: linear-gradient(135deg, #facc15, #f97316)">
+              <svg><use href="#i-gamepad"/></svg>
+            </div>
+            <div class="project-body">
+              <p class="project-kicker">Godot · Side project</p>
+              <h3>Desktop Pet Banana</h3>
+              <p>Banana Cat as a desktop pet that lives on top of your windows, built in Godot with GDScript. More interactions are on the way.</p>
+              <div class="tags"><span>Godot</span><span>GDScript</span></div>
+              <div class="project-links">
+                <a href="https://github.com/bpdang07/DesktopPetBanana" target="_blank" rel="noopener"><svg><use href="#i-github"/></svg> Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project spot lift" data-cat="cloud">
+            <div class="project-art" style="--art: linear-gradient(135deg, #3b82f6, #22d3ee)">
+              <svg><use href="#i-calendar"/></svg>
+            </div>
+            <div class="project-body">
+              <p class="project-kicker">Web</p>
+              <h3>Multipurpose Scheduler</h3>
+              <p>A scheduling website for appointments, inventory and more, designed to make everyday inventory management more visual.</p>
+              <div class="tags"><span>Web</span><span>Scheduling</span><span>UI design</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="container section section-tight">
+        <div class="section-head reveal">
+          <span class="kicker">Live from GitHub</span>
+          <h2>@bpdang07</h2>
+          <span class="rule"></span>
+          <p class="section-sub" id="ghNote">Pulled straight from the GitHub API when you open this tab.</p>
+        </div>
+        <div class="gh-layout">
+          <aside class="card gh-profile reveal" id="ghProfile">
+            <img src="assets/avatar.jpg" alt="" width="88" height="88">
+            <h3 id="ghName">Billy Dang</h3>
+            <a class="gh-login" href="https://github.com/bpdang07" target="_blank" rel="noopener">@bpdang07</a>
+            <p id="ghBio">B.S. in Software Engineering @ Iowa State · Interested in Full Stack, Cloud Engineering, and Game Dev</p>
+            <dl class="gh-stats">
+              <div><dt>Repos</dt><dd id="ghRepos">–</dd></div>
+              <div><dt>Followers</dt><dd id="ghFollowers">–</dd></div>
+              <div><dt>Since</dt><dd id="ghSince">–</dd></div>
+            </dl>
+            <a class="btn btn-ghost btn-block" href="https://github.com/bpdang07" target="_blank" rel="noopener"><svg class="ico"><use href="#i-github"/></svg> View profile</a>
+          </aside>
+          <div class="repo-grid" id="repoGrid">
+            <div class="card repo skeleton"></div>
+            <div class="card repo skeleton"></div>
+            <div class="card repo skeleton"></div>
+            <div class="card repo skeleton"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== RESUME ============================== -->
+    <section class="page" id="page-resume" data-title="Résumé — Billy Phu Dang" hidden>
+      <div class="container section page-top">
+        <div class="section-head reveal">
+          <span class="kicker">Résumé</span>
+          <h2>The one-page version.</h2>
+          <span class="rule"></span>
+        </div>
+        <div class="resume-grid">
+          <aside class="card resume-side reveal">
+            <img class="resume-avatar" src="assets/avatar.jpg" alt="" width="72" height="72">
+            <h3>Billy Phu Dang</h3>
+            <p class="muted">Entry-level cloud &amp; full-stack developer</p>
+            <ul class="contact-list">
+              <li><svg><use href="#i-mail"/></svg><a href="mailto:bpdang07@gmail.com">bpdang07@gmail.com</a></li>
+              <li><svg><use href="#i-linkedin"/></svg><a href="https://www.linkedin.com/in/billyphudang/" target="_blank" rel="noopener">in/billyphudang</a></li>
+              <li><svg><use href="#i-github"/></svg><a href="https://github.com/bpdang07" target="_blank" rel="noopener">github.com/bpdang07</a></li>
+            </ul>
+            <h4>Highlights</h4>
+            <ul class="highlights">
+              <li>AWS + CI/CD in a government cloud (VetsEZ)</li>
+              <li>Deployed &amp; managed projects on Google Cloud (Railpark Thoughts)</li>
+              <li>Nearly 3 years of IT system support at Iowa State</li>
+              <li>Best AI Application, ISU Applied AI Hackathon</li>
+            </ul>
+            <div class="resume-actions" data-pdf>
+              <a class="btn btn-primary btn-block" href="assets/Billy-Dang-Resume.pdf" download><svg class="ico"><use href="#i-download"/></svg> Download PDF</a>
+              <a class="btn btn-ghost btn-block" href="assets/Billy-Dang-Resume.pdf" target="_blank" rel="noopener"><svg class="ico"><use href="#i-external"/></svg> Open in new tab</a>
+            </div>
+          </aside>
+          <!-- The PDF isn't in the public repo (it has a phone number); main.js shows the fallback when it's missing -->
+          <div class="card pdf-frame reveal" style="--d:1" data-pdf>
+            <iframe data-src="assets/Billy-Dang-Resume.pdf#view=FitH" title="Billy Phu Dang résumé (PDF)"></iframe>
+          </div>
+          <div class="card resume-request reveal" style="--d:1" data-pdf-fallback hidden>
+            <span class="kicker">Full résumé</span>
+            <h3>Want the PDF? I'll send it right over.</h3>
+            <p>My full résumé is available on request. Everything on it is also on this site: see <a href="#experience">Experience</a> for roles and dates, and <a href="#projects">Projects</a> for what I've built.</p>
+            <div class="resume-request-actions">
+              <a class="btn btn-primary" href="mailto:bpdang07@gmail.com?subject=R%C3%A9sum%C3%A9%20request"><svg class="ico"><use href="#i-mail"/></svg> Email me</a>
+              <a class="btn btn-ghost" href="https://www.linkedin.com/in/billyphudang/" target="_blank" rel="noopener"><svg class="ico"><use href="#i-linkedin"/></svg> LinkedIn</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="cta card reveal">
+        <div class="cta-glow" aria-hidden="true"></div>
+        <span class="kicker">Contact</span>
+        <h2>Let's build something <span class="grad">in the cloud</span>.</h2>
+        <p>I'm looking for entry-level cloud and full-stack roles. Email is the fastest way to reach me.</p>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="mailto:bpdang07@gmail.com"><svg class="ico"><use href="#i-mail"/></svg> bpdang07@gmail.com</a>
+          <button class="btn btn-ghost" id="copyEmail" type="button"><svg class="ico"><use href="#i-copy"/></svg> <span>Copy email</span></button>
+        </div>
+      </div>
+      <div class="foot-meta">
+        <span>© <span id="year">2026</span> Billy Phu Dang</span>
+        <span class="mono">Built from scratch · HTML · CSS · JS</span>
+        <span class="foot-links">
+          <a href="https://github.com/bpdang07" target="_blank" rel="noopener" aria-label="GitHub"><svg><use href="#i-github"/></svg></a>
+          <a href="https://www.linkedin.com/in/billyphudang/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg><use href="#i-linkedin"/></svg></a>
+          <a href="mailto:bpdang07@gmail.com" aria-label="Email"><svg><use href="#i-mail"/></svg></a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
