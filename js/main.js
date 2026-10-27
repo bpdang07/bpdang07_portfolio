@@ -54,7 +54,7 @@
   /* ------------------------------------------------------------------
      Tabs: hash routing with a sliding indicator and directional slides
      ------------------------------------------------------------------ */
-  const TABS = ['home', 'experience', 'projects', 'resume'];
+  const TABS = ['home', 'experience', 'projects', 'art', 'resume'];
   const pages = TABS.map((t) => $('#page-' + t));
   const tabLinks = $$('.tabs a');
   const indicator = $('.tab-indicator');
@@ -121,6 +121,8 @@
     if (name === 'projects') loadGitHub();
     if (name === 'experience') fitGantt();
     onScroll();
+    // art.js listens for this to start and stop its sketches
+    document.dispatchEvent(new CustomEvent('tabshow', { detail: name }));
   }
 
   // Only tab hashes route; others (like the skip link's #main) behave normally

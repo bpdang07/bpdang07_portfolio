@@ -787,6 +787,86 @@ a.repo:hover .repo-name svg { transform: translate(2px, -2px); color: var(--acce
 @keyframes shimmer { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
 
 /* ==========================================================================
+   Art
+   ========================================================================== */
+.section-sub a { color: var(--accent); font-weight: 600; }
+.section-sub a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+.art-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); gap: 22px; }
+.art-card { display: flex; flex-direction: column; overflow: hidden; }
+.art-feature { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); margin-bottom: 22px; }
+
+.art-stage { position: relative; aspect-ratio: 1; background: var(--bg-2); overflow: hidden; touch-action: pan-y; }
+.art-feature .art-stage { aspect-ratio: 16 / 10; }
+.art-stage canvas { display: block; width: 100% !important; height: 100% !important; }
+.art-hint {
+  position: absolute; z-index: 2; left: 12px; bottom: 12px;
+  padding: 5px 10px; border-radius: 999px;
+  background: color-mix(in srgb, var(--surface) 80%, transparent);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  border: 1px solid var(--line);
+  font-size: 0.74rem; font-weight: 500; color: var(--text-2);
+  pointer-events: none; transition: opacity 0.3s;
+}
+.art-stage:hover .art-hint { opacity: 0; }
+.art-error { display: grid; place-items: center; height: 100%; padding: 24px; text-align: center; color: var(--muted); font-size: 0.9rem; }
+
+.art-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.art-body h3 { font-size: 1.25rem; }
+.art-body > p:not(.project-kicker) { color: var(--muted); font-size: 0.93rem; }
+.art-feature .art-body { padding: 32px; justify-content: center; gap: 12px; }
+.art-feature .art-body h3 { font-size: clamp(1.5rem, 2.6vw, 2rem); }
+.art-feature .art-actions { margin-top: 8px; }
+
+.art-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: auto; padding-top: 10px; }
+.icon-btn {
+  display: inline-grid; place-items: center;
+  width: 36px; height: 36px; border-radius: 10px;
+  background: var(--surface-2); border: 1px solid var(--line);
+  color: var(--text-2);
+  transition: border-color 0.2s, color 0.2s, background-color 0.2s, transform 0.2s;
+}
+.icon-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+.icon-btn svg { width: 17px; height: 17px; }
+.icon-btn.wide { display: inline-flex; align-items: center; gap: 6px; width: auto; padding: 0 12px; font-size: 0.85rem; font-weight: 600; }
+.icon-btn[aria-expanded="true"] { background: var(--text); color: var(--bg); border-color: var(--text); }
+.art-learn { margin-left: auto; display: inline-flex; align-items: center; gap: 5px; font-size: 0.82rem; font-weight: 600; color: var(--muted); transition: color 0.2s; }
+.art-learn:hover { color: var(--accent); }
+.art-learn svg { width: 14px; height: 14px; }
+
+/* The code view sits over the canvas, so opening it never changes the card's size */
+.art-code { position: absolute; z-index: 3; inset: 0; display: flex; flex-direction: column; background: var(--bg-2); }
+.art-code[hidden] { display: none; }
+.art-code-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 12px 8px 18px; border-bottom: 1px solid var(--line);
+  font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted);
+}
+.art-code-bar button {
+  padding: 4px 10px; border-radius: 8px;
+  background: var(--surface); border: 1px solid var(--line-strong);
+  font-size: 0.75rem; font-weight: 600; color: var(--text-2);
+}
+.art-code-bar button:hover { border-color: var(--accent); color: var(--accent); }
+.art-code pre { flex: 1; min-height: 0; margin: 0; overflow: auto; }
+.art-code code {
+  display: block; padding: 14px 18px 18px;
+  font-family: var(--font-mono); font-size: 0.76rem; line-height: 1.65;
+  font-variant-ligatures: none;
+  color: var(--text-2); white-space: pre; tab-size: 2;
+}
+.tk-c { color: var(--muted); font-style: italic; }
+.tk-s { color: var(--accent-2); }
+.tk-n { color: var(--gold); }
+.tk-k { color: var(--accent-3); }
+.tk-f { color: var(--accent); }
+
+.art-more { margin-top: 22px; padding: 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px; }
+.art-more h3 { font-size: 1.4rem; }
+.art-more p { color: var(--muted); max-width: 560px; margin-top: 8px; }
+.art-more-links { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* ==========================================================================
    Résumé
    ========================================================================== */
 .resume-grid { display: grid; grid-template-columns: 330px 1fr; gap: 22px; align-items: start; }
@@ -848,7 +928,8 @@ a.repo:hover .repo-name svg { transform: translate(2px, -2px); color: var(--acce
   .hero { grid-template-columns: 1fr; gap: 24px; padding-top: 40px; text-align: left; }
   .hero-visual { order: -1; }
   .orbit-wrap { --size: 360px; }
-  .about-grid, .gh-layout, .resume-grid { grid-template-columns: 1fr; }
+  .about-grid, .gh-layout, .resume-grid, .art-feature { grid-template-columns: 1fr; }
+  .art-feature .art-body { padding: 22px; }
   .gh-profile, .resume-side { position: static; }
   .value-grid { grid-template-columns: 1fr; }
   .org-grid, .stats { grid-template-columns: repeat(2, 1fr); }
@@ -861,7 +942,10 @@ a.repo:hover .repo-name svg { transform: translate(2px, -2px); color: var(--acce
     display: grid; grid-template-columns: 1fr auto; row-gap: 10px;
   }
   .tabs { grid-column: 1 / -1; grid-row: 2; justify-content: space-between; }
-  .tabs a { flex: 1; text-align: center; padding: 7px 6px; font-size: 0.86rem; }
+  /* Size tabs to their labels so five fit on a phone */
+  .tabs a { flex: 1 1 auto; text-align: center; padding: 7px 6px; font-size: 0.86rem; }
+  .art-feature .art-stage { aspect-ratio: 4 / 3; }
+  .art-more { padding: 24px 20px; }
   .container { padding: 0 16px; }
   .section { padding: 64px 16px; }
   .section-tight { padding-top: 16px; }
@@ -889,6 +973,8 @@ a.repo:hover .repo-name svg { transform: translate(2px, -2px); color: var(--acce
 @media (max-width: 420px) {
   .org-grid, .stats { grid-template-columns: 1fr; }
   .brand-name { display: none; }
+  .tabs { gap: 2px; }
+  .tabs a { padding: 7px 4px; font-size: 0.8rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

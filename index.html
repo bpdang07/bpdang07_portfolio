@@ -57,6 +57,8 @@
     <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
     <symbol id="i-pipeline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="6" height="6" rx="1.5"/><rect x="15" y="15" width="6" height="6" rx="1.5"/><path d="M6 9v3a3 3 0 0 0 3 3h6"/></symbol>
     <symbol id="i-replay" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 5v14M15 5v14"/></symbol>
+    <symbol id="i-resume" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M7.5 4.8v14.4L19 12z"/></symbol>
     <symbol id="i-fork" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="5" r="2"/><circle cx="18" cy="5" r="2"/><circle cx="12" cy="19" r="2"/><path d="M6 7v2a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3V7M12 12v5"/></symbol>
   </svg>
 
@@ -73,6 +75,7 @@
         <a href="#home" data-tab="home">Home</a>
         <a href="#experience" data-tab="experience">Experience</a>
         <a href="#projects" data-tab="projects">Projects</a>
+        <a href="#art" data-tab="art">Art</a>
         <a href="#resume" data-tab="resume">Résumé</a>
         <span class="tab-indicator" aria-hidden="true"></span>
       </nav>
@@ -582,6 +585,34 @@
       </div>
     </section>
 
+    <!-- ============================== ART ============================== -->
+    <section class="page" id="page-art" data-title="Art — Billy Phu Dang" hidden>
+      <div class="container section page-top">
+        <div class="section-head reveal">
+          <span class="kicker">Art</span>
+          <h2>Code that draws.</h2>
+          <span class="rule"></span>
+          <p class="section-sub">Generative sketches in p5.js, the browser version of <a href="https://processing.org/" target="_blank" rel="noopener">Processing</a>. They're all live: move over one to play with it, reseed it for a new piece, or open the code to see how it works.</p>
+        </div>
+
+        <!-- Cards are built by js/art.js from its SKETCHES list -->
+        <div id="artFeature"></div>
+        <div class="art-grid" id="artGrid"></div>
+
+        <div class="card art-more reveal">
+          <div>
+            <span class="kicker">Make your own</span>
+            <h3>Processing and p5.js are free.</h3>
+            <p>Processing is a sketchbook and language for learning to code through visuals, started by Casey Reas and Ben Fry in 2001. p5.js brings the same ideas to the browser, with nothing to install.</p>
+          </div>
+          <div class="art-more-links">
+            <a class="btn btn-primary" href="https://processing.org/examples" target="_blank" rel="noopener"><svg class="ico"><use href="#i-external"/></svg> Processing examples</a>
+            <a class="btn btn-ghost" href="https://editor.p5js.org/" target="_blank" rel="noopener"><svg class="ico"><use href="#i-code"/></svg> p5.js web editor</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============================== RESUME ============================== -->
     <section class="page" id="page-resume" data-title="Résumé — Billy Phu Dang" hidden>
       <div class="container section page-top">
@@ -657,5 +688,6 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="js/main.js"></script>
+  <script src="js/art.js"></script>
 </body>
 </html>
