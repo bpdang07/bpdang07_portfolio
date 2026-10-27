@@ -401,6 +401,8 @@
      Live GitHub data (falls back to a snapshot if the API is unreachable)
      ------------------------------------------------------------------ */
   const GH_USER = 'bpdang07';
+  // Public repos that stay off the portfolio (the interview prep site is unlisted)
+  const HIDDEN_REPOS = ['ibm-interview-prep'];
   const LANG_COLORS = {
     Go: '#00ADD8', Java: '#b07219', HTML: '#e34c26', CSS: '#563d7c', JavaScript: '#f1e05a',
     TypeScript: '#3178c6', Python: '#3572A5', GDScript: '#355570', Swift: '#F05138',
@@ -459,7 +461,7 @@
     if (offline) $('#ghNote').textContent = "Couldn't reach GitHub just now, so this is a recent snapshot.";
 
     const list = repos
-      .filter((r) => !r.fork && r.name.toLowerCase() !== GH_USER)
+      .filter((r) => !r.fork && r.name.toLowerCase() !== GH_USER && !HIDDEN_REPOS.includes(r.name))
       .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
 
     const grid = $('#repoGrid');
