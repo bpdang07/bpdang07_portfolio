@@ -30,7 +30,7 @@ Then open http://localhost:8080.
 
 The Art tab loads p5.js from cdnjs only when it's first opened, and each sketch animates only while it's on screen.
 
-The "Live from GitHub" section reads public repos from the GitHub API whenever the Projects tab opens, so new repos show up on their own. The **Interview prep** button in the header only appears when the site runs on your own computer.
+The "Live from GitHub" section reads public repos from the GitHub API whenever the Projects tab opens, so new repos show up on their own. The **Interview prep** button in the header opens the published prep site (https://bpdang07.github.io/ibm-interview-prep/), or the local copy on port 8081 when the portfolio runs on your own computer.
 
 ## Publish (GitHub Pages)
 

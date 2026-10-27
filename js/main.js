@@ -401,8 +401,6 @@
      Live GitHub data (falls back to a snapshot if the API is unreachable)
      ------------------------------------------------------------------ */
   const GH_USER = 'bpdang07';
-  // Public repos that stay off the portfolio (the interview prep site is unlisted)
-  const HIDDEN_REPOS = ['ibm-interview-prep'];
   const LANG_COLORS = {
     Go: '#00ADD8', Java: '#b07219', HTML: '#e34c26', CSS: '#563d7c', JavaScript: '#f1e05a',
     TypeScript: '#3178c6', Python: '#3572A5', GDScript: '#355570', Swift: '#F05138',
@@ -461,7 +459,7 @@
     if (offline) $('#ghNote').textContent = "Couldn't reach GitHub just now, so this is a recent snapshot.";
 
     const list = repos
-      .filter((r) => !r.fork && r.name.toLowerCase() !== GH_USER && !HIDDEN_REPOS.includes(r.name))
+      .filter((r) => !r.fork && r.name.toLowerCase() !== GH_USER)
       .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
 
     const grid = $('#repoGrid');
@@ -530,14 +528,13 @@
       $('use', heroResume).setAttribute('href', '#i-arrow');
     });
 
-  // Link to the interview prep site, only when running locally (never on the published site)
+  // The interview prep button opens the local prep site when this runs on your own computer,
+  // and the published one (its default href) everywhere else
   const prepLink = $('#prepLink');
   if (location.protocol === 'file:') {
     prepLink.href = new URL('../ibm-interview-prep/index.html', location.href).href;
-    prepLink.hidden = false;
   } else if (['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)) {
     prepLink.href = `${location.protocol}//${location.hostname}:8081/`;
-    prepLink.hidden = false;
   }
 
   /* ------------------------------------------------------------------
